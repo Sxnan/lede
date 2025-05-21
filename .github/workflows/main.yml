@@ -68,7 +68,10 @@ jobs:
           ./scripts/feeds install -a
 
       - name: Generate configuration file
-        run: make defconfig
+        run: |
+          cp diffconfig .config 
+          make defconfig
+          cat .config
 
       - name: Debug with tmate
         if: ${{ inputs.debug_enabled }}
